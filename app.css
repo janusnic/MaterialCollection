@@ -47,6 +47,14 @@ a:hover {
     }
 
 }
+
+@media (max-width: 600px) {
+
+    .header-add-button span{
+        display: none !important;
+    }
+
+}
 @media (max-width: 900px) {
     .mdl-card {
         height: 300px;
