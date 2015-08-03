@@ -2,6 +2,7 @@
 A Collection manager using HTML5, AngularJs and Material
 
 <h3>HOW TO USE IT?</h3>
+![screenshot](screenshot1.png)
 
 To use this aplication, 
 
