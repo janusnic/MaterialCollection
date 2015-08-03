@@ -46,12 +46,21 @@ a:hover {
         display: none !important;
     }
 
+    .splash-image{
+        margin-top: 5%;
+    }
+
 }
 
 @media (max-width: 600px) {
 
     .header-add-button span{
         display: none !important;
+    }
+
+    .splash h2, .splash p{
+        text-align: justify !important;
+        padding: 0 !important;
     }
 
 }
@@ -73,7 +82,19 @@ a:hover {
     .header-add-button{
         display: block !important;
     }
+
+    .splash-image{
+        max-width: 400px;
+    }
 }
+
+@media (max-width: 990px) {
+
+    .splash-image{
+        max-width: 400px;
+    }
+}
+
 .image-show {
     position: fixed;
     top: 0;
@@ -102,4 +123,42 @@ a:hover {
 }
 #input .mdl-textfield {
     width: 100%;
+}
+
+.splash{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 9999;
+    background: #F7B11E;
+}
+
+.splash .col-md-4{
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+.splash img{
+    width: 100%;
+}
+
+.splash h2, .splash p{
+    color: white;
+    padding: 12px 0;
+    text-align: center;
+}
+
+.splash p{
+    padding: 0 20px;
+}
+.skip{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid white;
 }

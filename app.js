@@ -71,6 +71,10 @@
 
 $(document).ready(function() {
 
+    if(localStorage.getItem('visit')){
+        $('.splash').css('display', 'none');
+    }
+
     $('#close').click(function() {
         $('.image-show').fadeOut('fast');
         $('.image-show').css('background', 'black');
@@ -82,5 +86,10 @@ $(document).ready(function() {
 
     $('#fab, .header-add-button').click(function() {
         $('#input').fadeIn('fast');
+    });
+
+    $('.skip button').click(function() {
+        $('.splash').css('display', 'none');
+        localStorage.setItem('visit', true);
     });
 });
