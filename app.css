@@ -4,6 +4,7 @@ body {
 .mdl-layout__header {
     background-color: #4B4A5A;
 }
+
 .page-content .container {
     margin-top: 15px;
 }
@@ -36,25 +37,33 @@ a:hover {
     text-decoration: none;
     cursor: pointer;
 }
-@media (max-width: 991px) {
+@media (min-width: 900px) {
     .mdl-card {
         height: 300px;
     }
-    #fab {
-        right: 20px;
+
+    .header-add-button{
+        display: none !important;
     }
+
 }
-@media (max-width: 867px) {
+@media (max-width: 900px) {
     .mdl-card {
         height: 300px;
     }
-    #fab {
-        right: 20px;
-    }
+
     #input .mdl-card {
         width: 100% !important;
         margin-top: 0 !important;
         position: absolute;
+    }
+
+    #fab{
+        display: none;
+    }
+
+    .header-add-button{
+        display: block !important;
     }
 }
 .image-show {

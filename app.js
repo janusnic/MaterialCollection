@@ -80,7 +80,7 @@ $(document).ready(function() {
         $('#input').css('display', 'none');
     });
 
-    $('#fab').click(function() {
+    $('#fab, .header-add-button').click(function() {
         $('#input').fadeIn('fast');
     });
 });

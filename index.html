@@ -11,13 +11,14 @@
     <link rel="icon" href="icon.png" />
     <meta name="description" content="A Collection manager using HTML5, AngularJs and Material Design">
     <meta name="keywords" content="material, design, wallpapers, collection, save, offline, angular, app">
+    <!-- IMPORTS OS LIBS -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
-    <!-- Latest compiled and minified CSS -->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js" ></script>
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- APP LIBS-->
     <link rel="stylesheet" type="text/css" href="app.css">
     <script type="text/javascript" src="app.js"></script>
   </head>
@@ -30,7 +31,13 @@
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation. We hide it in small screens. -->
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <nav class="mdl-navigation">
+          <a style="display: none"class="mdl-navigation__link header-add-button" href="#">
+            <span>Add Photo</span>
+            <button style="color: white;" class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons">insert_photo</i>
+            </button>
+          </a>
         </nav>
       </div>
     </header>
@@ -41,7 +48,7 @@
       </nav>
     </div>
     <main class="mdl-layout__content">
-      <button id="fab" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"><i class="material-icons">add</i></button>
+      <button id="fab" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"><i class="material-icons">insert_photo</i></button>
       <div class="page-content">
       <div class="container">
       <div class="row" ng-show="images.length">
