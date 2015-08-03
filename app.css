@@ -47,7 +47,7 @@ a:hover {
     }
 
     .splash-image{
-        margin-top: 5%;
+        margin-top: 8px;
     }
 
 }
@@ -149,12 +149,11 @@ a:hover {
 
 .splash h2, .splash p{
     color: white;
-    padding: 12px 0;
     text-align: center;
 }
 
 .splash p{
-    padding: 0 20px;
+    padding: 0 16px;
 }
 .skip{
     position: absolute;
