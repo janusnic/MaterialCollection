@@ -52,6 +52,14 @@ a:hover {
 
 }
 
+@media (max-width: 990px) {
+
+    .splash-image{
+        width: 450px;
+    }
+
+}
+
 @media (max-width: 600px) {
 
     .header-add-button span{
@@ -88,12 +96,20 @@ a:hover {
     }
 }
 
-@media (max-width: 990px) {
+@media (max-height: 500px){
 
-    .splash-image{
-        max-width: 400px;
+    .skip{
+        position: relative !important;
     }
 }
+
+@media (max-height: 650px){
+
+    .splash-image{
+        max-width: 300px;
+    }
+}
+
 
 .image-show {
     position: fixed;
@@ -156,7 +172,7 @@ a:hover {
     padding: 0 16px;
 }
 .skip{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     border-top: 1px solid white;

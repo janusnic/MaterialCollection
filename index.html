@@ -24,63 +24,77 @@
   </head>
   <body ng-controller="containerController">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
-        <span class="mdl-layout-title">{{name}}</span>
-        <!-- Add spacer, to align navigation to the right -->
-        <div class="mdl-layout-spacer"></div>
-        <!-- Navigation. We hide it in small screens. -->
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">{{name}}</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation">
+            <a style="display: none" class="mdl-navigation__link header-add-button" href="#">
+              <span>Add Photo</span>
+              <button style="color: white;" class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">insert_photo</i>
+              </button>
+            </a>
+          </nav>
+        </div>
+      </header>
+      <!-- DRAWER -->
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">
+          <i class="material-icons" style="position: relative; top: 5px;">settings</i>
+          <div style="display: inline-block">Settings</div>
+        </span>
         <nav class="mdl-navigation">
-          <a style="display: none" class="mdl-navigation__link header-add-button" href="#">
-            <span>Add Photo</span>
-            <button style="color: white;" class="mdl-button mdl-js-button mdl-button--icon">
-              <i class="material-icons">insert_photo</i>
-            </button>
+          <a class="mdl-navigation__link" ng-click="changeName()">
+            <i class="material-icons" style="position: relative; top: 6px;">edit</i>
+            Rename Collection
           </a>
+          <a class="mdl-navigation__link" style="color: #F44336" onclick="clearData()">
+            <i class="material-icons" style="position: relative; top: 7px;">delete</i>
+            Clear All Data</a>
         </nav>
       </div>
-    </header>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Settings</span>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" ng-click="changeName()">Change Collection's Name</a>
-      </nav>
-    </div>
-    <main class="mdl-layout__content">
-      <button id="fab" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"><i class="material-icons">insert_photo</i></button>
-      <div class="page-content">
-      <div class="container">
-      <div class="row" ng-show="images.length">
-        <div class="thumb col-md-4" style="cursor: pointer" ng-repeat="x in images track by $index">
-          <div class="mdl-card mdl-shadow--2dp" ng-style="{'background':'url({{x.url}}) center / cover'}">
-            <div class="mdl-card--expand" ng-click="showImage(x.url)"></div>
-            <div class="mdl-card__actions">
-              <span class="demo-card-image__filename">
-              <button ng-click="copy(x)" style="float: right" class="mdl-button mdl-js-button mdl-button--icon">
-              <i class="material-icons">share</i>
-              </button>
-              <button ng-click="removeItem($index)" style="float: right" class="mdl-button mdl-js-button mdl-button--icon">
-              <i class="material-icons">delete</i>
-              </button>
-              <a href="{{x.url}}">
-              <button style="float: right; color: white;" class="mdl-button mdl-js-button mdl-button--icon">
-              <i class="material-icons">file_download</i>
-              </button> 
-              </a>
-              </span>
+      <!-- CARDS BODY -->
+      <main class="mdl-layout__content">
+        <button id="fab" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"><i class="material-icons">insert_photo</i></button>
+        <div class="page-content">
+          <div class="container">
+            <div class="row" ng-show="images.length">
+              <div class="thumb col-md-4" style="cursor: pointer" ng-repeat="x in images track by $index">
+                <div class="mdl-card mdl-shadow--2dp" ng-style="{'background':'url({{x.url}}) center / cover'}">
+                  <div class="mdl-card--expand" ng-click="showImage(x.url)"></div>
+                  <div class="mdl-card__actions">
+                    <span class="demo-card-image__filename">
+                    <button ng-click="copy(x)" style="float: right" class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">share</i>
+                    </button>
+                    <button ng-click="removeItem($index)" style="float: right" class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">delete</i>
+                    </button>
+                    <a href="{{x.url}}">
+                    <button style="float: right; color: white;" class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">open_in_browser</i>
+                    </button> 
+                    </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div>
-        </div>
-      </div>
-    </main>
+      </main>
+    </div>
+    <!-- IMAGE OPENING -->
     <div class="image-show">
       <button id="close" style="background: white; margin: 8px; float: right;" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
       <i class="material-icons">close</i>
       </button>
     </div>
+    <!-- URL INPUT-->
     <div id="input">
       <div class="mdl-card mdl-shadow--8dp">
         <div style="color: #727272;padding: 16px 16px 0 16px" class="mdl-card__title">Add An Image</div>
@@ -109,7 +123,7 @@
         </div>
       </div>
       <div class="skip">      
-        <button style="float: right; color: white;margin: 16px" class="mdl-button mdl-js-button">SKIP</button>
+        <button style="float: right; color: white;margin: 16px" class="mdl-button mdl-js-button">START</button>
       </div>
     </div>
   </body>

@@ -1,3 +1,14 @@
+function clearData(){
+    localStorage.removeItem('images');
+    localStorage.removeItem('name');
+    localStorage.removeItem('visit');
+    location.reload();
+}
+
+function hasClass(el, cls) {
+    return el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
+}
+
 (function() {
     angular.module('wallpaper', [])
         .controller('containerController', ['$scope', function($scope) {
@@ -14,9 +25,7 @@
 
             $scope.addItem = function(item) {
 
-                function hasClass(el, cls) {
-                    return el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
-                }
+                
 
                 var element = document.getElementById("input-url");
                 /* use like below */
