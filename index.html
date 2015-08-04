@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="icon.png" />
+    <link rel="icon" href="assets/img/icon.png" />
     <meta name="description" content="A Collection manager using HTML5, AngularJs and Material Design">
     <meta name="keywords" content="material, design, wallpapers, collection, save, offline, angular, app">
     <!-- IMPORTS OS LIBS -->
@@ -19,10 +19,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- APP LIBS-->
-    <link rel="stylesheet" type="text/css" href="app.css">
-    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+    <script type="text/javascript" src="assets/js/app.js"></script>
   </head>
   <body ng-controller="containerController">
+    <!-- GENERAL CONTAINER -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
@@ -44,12 +45,11 @@
       <!-- DRAWER -->
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">
-          <i class="material-icons" style="position: relative; top: 5px;">settings</i>
           <div style="display: inline-block">Settings</div>
         </span>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" ng-click="changeName()">
-            <i class="material-icons" style="position: relative; top: 6px;">edit</i>
+            <i class="material-icons" style="position: relative; top: 7px;">edit</i>
             Rename Collection
           </a>
           <a class="mdl-navigation__link" style="color: #F44336" onclick="clearData()">
@@ -59,7 +59,7 @@
       </div>
       <!-- CARDS BODY -->
       <main class="mdl-layout__content">
-        <button id="fab" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"><i class="material-icons">insert_photo</i></button>
+        <button id="fab" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--colored"><i class="material-icons">insert_photo</i></button>
         <div class="page-content">
           <div class="container">
             <div class="row" ng-show="images.length">
@@ -113,17 +113,23 @@
       <div class="container">
         <div class="row" style="text-align: center;">
           <div class="col-md-4 splash-image">
-            <img src="splash.svg">
+            <img class="splash-img" src="assets/img/splash.svg">
+            <img class="splash-img2" src="assets/img/splash2.svg">
             <h2>Create a collection</h2>
             <p>
               Name your collection and add images to it,
-              but don't worry, we will remember it! <br/> No login required
+              but don't worry, no login required. Quick and simple!
             </p>
           </div>
         </div>
       </div>
-      <div class="skip">      
-        <button style="float: right; color: white;margin: 16px" class="mdl-button mdl-js-button">START</button>
+      <div class="splash-actions">      
+        <button style="float: left; color: white;margin: 16px" class="mdl-button mdl-js-button skip">SKIP</button>     
+        <button style="float: right; color: white;margin: 16px" class="mdl-button mdl-js-button mdl-button--icon next"><i class="material-icons">keyboard_arrow_right</i></button>
+        <div class="dots">
+          <i class="material-icons dot-active dot1">lens</i>
+          <i class="material-icons dot-disable dot2">lens</i>
+        </div>
       </div>
     </div>
   </body>

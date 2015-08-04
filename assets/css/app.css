@@ -1,0 +1,219 @@
+body {
+    background: whitesmoke;
+}
+
+a,
+a:link,
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ----- HEADER -----*/
+.mdl-layout__header {
+    background-color: #4B4A5A;
+}
+
+/* ----- CONTAINER -----*/
+.page-content .container {
+    margin-top: 15px;
+}
+
+.mdl-card {
+    width: 100%;
+    height: 256px;
+    overflow: hidden;
+}
+
+.mdl-card__actions {
+    height: auto;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.demo-card-image__filename {
+    color: #fff;
+}
+
+.thumb {
+    margin-bottom: 15px;
+}
+
+#fab {
+    position: fixed;
+    bottom: 12px;
+    right: 12px;
+    background: #4B4A5A;
+    z-index: 555;
+}
+/* ----- IMAGE GALLERY SHOW -----*/
+.image-show {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 666;
+    background: black;
+    display: none;
+}
+/* ----- IMAGE ADD INPUT -----*/
+#input {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 777;
+    display: none;
+}
+
+#input .mdl-card {
+    width: 400px;
+    height: auto;
+    margin-top: 28px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#input .mdl-textfield {
+    width: 100%;
+}
+/* ----- SPLASH SCREEN -----*/
+.splash{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 9999;
+    background: #FEA724;
+    -webkit-transition: 500ms background ease;
+    transition: 500ms background ease;
+}
+
+.splash .col-md-4{
+    display: inline-block;
+    float: none;
+    text-align: left;
+    margin-right: -4px;
+}
+
+.splash-img2{
+    display: none;
+}
+
+.splash img{
+    width: 100%;
+}
+
+.splash h2, .splash p{
+    color: white;
+    text-align: center;
+}
+
+.splash p{
+    padding: 0 16px;
+}
+
+.splash-actions{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.51);
+}
+
+.dots{
+    width: 100px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 24px 0;
+}
+
+.dots i{
+    font-size: 12px;
+    -webkit-transition: 500ms background ease;
+    transition: 500ms background ease;
+}
+
+.dot-active{
+    color: white;
+    opacity: 0.7;
+}
+
+.dot-disable{
+    color: black;
+    opacity: 0.4;
+}
+/* ----- MEDIA QUERIES ----- */
+@media (min-width: 900px) {
+
+    .mdl-card {
+        height: 300px;
+    }
+
+    .header-add-button{
+        display: none !important;
+    }
+
+    .splash-image{
+        margin-top: 8px;
+    }
+
+}
+@media (max-width: 990px) {
+
+    .splash-image{
+        width: 450px;
+    }
+
+}
+@media (max-width: 600px) {
+
+    .header-add-button span{
+        display: none !important;
+    }
+    .splash h2, .splash p{
+        text-align: justify !important;
+        padding: 0 !important;
+    }
+
+}
+@media (max-width: 900px) {
+
+    .mdl-card {
+        height: 300px;
+    }
+
+    #input .mdl-card {
+        width: 100% !important;
+        margin-top: 0 !important;
+        position: absolute;
+    }
+
+    #fab{
+        display: none;
+    }
+
+    .header-add-button{
+        display: block !important;
+    }
+
+    .splash-image{
+        max-width: 400px;
+    }
+}
+
+@media (max-height: 500px){
+
+    .skip{
+        position: relative !important;
+    }
+}
+
+@media (max-height: 650px){
+
+    .splash-image{
+        max-width: 300px;
+    }
+}
