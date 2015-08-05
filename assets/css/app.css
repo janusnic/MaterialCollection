@@ -90,6 +90,7 @@ a:hover {
     background: #FEA724;
     -webkit-transition: 500ms background ease;
     transition: 500ms background ease;
+    display: none;
 }
 
 .splash .col-md-4{
