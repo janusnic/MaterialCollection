@@ -1,44 +1,102 @@
+/* ----- General Page Definitions ----- */
+
 body {
     background: whitesmoke;
+    margin: 0 auto;
 }
-
 a,
 a:link,
 a:hover {
     text-decoration: none;
     cursor: pointer;
 }
-
+.h2,
+h2 {
+    font-size: 30px;
+}
+.h1,
+.h2,
+.h3,
+h1,
+h2,
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.container:before,
+.container:after {
+    display: table;
+    content: " ";
+}
+.container:after {
+    clear: both;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
 /* ----- HEADER -----*/
+
 .mdl-layout__header {
     background-color: #4B4A5A;
 }
-
 /* ----- CONTAINER -----*/
+
 .page-content .container {
     margin-top: 15px;
 }
-
 .mdl-card {
     width: 100%;
     height: 256px;
     overflow: hidden;
 }
-
 .mdl-card__actions {
     height: auto;
     padding: 8px;
     background: rgba(0, 0, 0, 0.2);
 }
-
 .demo-card-image__filename {
     color: #fff;
 }
-
 .thumb {
     margin-bottom: 15px;
 }
-
 #fab {
     position: fixed;
     bottom: 12px;
@@ -47,6 +105,7 @@ a:hover {
     z-index: 555;
 }
 /* ----- IMAGE GALLERY SHOW -----*/
+
 .image-show {
     position: fixed;
     top: 0;
@@ -58,6 +117,7 @@ a:hover {
     display: none;
 }
 /* ----- IMAGE ADD INPUT -----*/
+
 #input {
     position: fixed;
     top: 0;
@@ -67,7 +127,6 @@ a:hover {
     z-index: 777;
     display: none;
 }
-
 #input .mdl-card {
     width: 400px;
     height: auto;
@@ -75,12 +134,12 @@ a:hover {
     margin-left: auto;
     margin-right: auto;
 }
-
 #input .mdl-textfield {
     width: 100%;
 }
 /* ----- SPLASH SCREEN -----*/
-.splash{
+
+.splash {
     width: 100%;
     height: 100%;
     top: 0;
@@ -92,129 +151,185 @@ a:hover {
     transition: 500ms background ease;
     display: none;
 }
-
-.splash .col-md-4{
+.splash .col-md-4 {
     display: inline-block;
     float: none;
     text-align: left;
     margin-right: -4px;
 }
-
-.splash-img2{
+.splash-img2 {
     display: none;
 }
-
-.splash img{
+.splash img {
     width: 100%;
 }
-
-.splash h2, .splash p{
+.splash h2,
+.splash p {
     color: white;
     text-align: center;
 }
-
-.splash p{
+.splash p {
     padding: 0 16px;
 }
-
-.splash-actions{
+.splash-actions {
     position: fixed;
     bottom: 0;
     width: 100%;
     border-top: 1px solid rgba(255, 255, 255, 0.51);
 }
-
-.dots{
+.dots {
     width: 100px;
     text-align: center;
     margin: 0 auto;
     padding: 24px 0;
 }
-
-.dots i{
+.dots i {
     font-size: 12px;
     -webkit-transition: 500ms background ease;
     transition: 500ms background ease;
 }
-
-.dot-active{
+.dot-active {
     color: white;
     opacity: 0.7;
 }
-
-.dot-disable{
+.dot-disable {
     color: black;
     opacity: 0.4;
 }
 /* ----- MEDIA QUERIES ----- */
-@media (min-width: 900px) {
 
+@media (min-width: 900px) {
     .mdl-card {
         height: 300px;
     }
-
-    .header-add-button{
+    .header-add-button {
         display: none !important;
     }
-
-    .splash-image{
+    .splash-image {
         margin-top: 8px;
     }
-
 }
 @media (max-width: 990px) {
-
-    .splash-image{
+    .splash-image {
         width: 450px;
     }
-
 }
 @media (max-width: 600px) {
-
-    .header-add-button span{
+    .header-add-button span {
         display: none !important;
     }
-    .splash h2, .splash p{
+    .splash h2,
+    .splash p {
         text-align: justify !important;
         padding: 0 !important;
     }
-
 }
 @media (max-width: 900px) {
-
     .mdl-card {
         height: 300px;
     }
-
     #input .mdl-card {
         width: 100% !important;
         margin-top: 0 !important;
         position: absolute;
     }
-
-    #fab{
+    #fab {
         display: none;
     }
-
-    .header-add-button{
+    .header-add-button {
         display: block !important;
     }
-
-    .splash-image{
+    .splash-image {
         max-width: 400px;
     }
 }
-
-@media (max-height: 500px){
-
-    .skip{
+@media (max-height: 500px) {
+    .skip {
         position: relative !important;
     }
 }
-
-@media (max-height: 650px){
-
-    .splash-image{
+@media (max-height: 650px) {
+    .splash-image {
         max-width: 300px;
+    }
+    .splash-image h2,
+    .splash-image p {
+        margin: 0;
+        padding: 0;
+    }
+    .splash-image h2 {
+        padding-bottom: 4px;
+    }
+}
+@media (max-width: 430px) {
+    .splash-image {
+        max-width: 300px;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-1,
+    .col-md-2,
+    .col-md-3,
+    .col-md-4,
+    .col-md-5,
+    .col-md-6,
+    .col-md-7,
+    .col-md-8,
+    .col-md-9,
+    .col-md-10,
+    .col-md-11,
+    .col-md-12 {
+        float: left;
+    }
+    .col-md-12 {
+        width: 100%;
+    }
+    .col-md-11 {
+        width: 91.66666667%;
+    }
+    .col-md-10 {
+        width: 83.33333333%;
+    }
+    .col-md-9 {
+        width: 75%;
+    }
+    .col-md-8 {
+        width: 66.66666667%;
+    }
+    .col-md-7 {
+        width: 58.33333333%;
+    }
+    .col-md-6 {
+        width: 50%;
+    }
+    .col-md-5 {
+        width: 41.66666667%;
+    }
+    .col-md-4 {
+        width: 33.33333333%;
+    }
+    .col-md-3 {
+        width: 25%;
+    }
+    .col-md-2 {
+        width: 16.66666667%;
+    }
+    .col-md-1 {
+        width: 8.33333333%;
     }
 }

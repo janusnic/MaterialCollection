@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- APP LIBS-->
     <link rel="stylesheet" type="text/css" href="assets/css/app.css">
   </head>
@@ -66,17 +65,17 @@
                   <div class="mdl-card--expand" ng-click="showImage(x.url)"></div>
                   <div class="mdl-card__actions">
                     <span class="demo-card-image__filename">
-                    <button ng-click="copy(x)" style="float: right" class="mdl-button mdl-js-button mdl-button--icon">
-                    <i class="material-icons">share</i>
-                    </button>
-                    <button ng-click="removeItem($index)" style="float: right" class="mdl-button mdl-js-button mdl-button--icon">
-                    <i class="material-icons">delete</i>
-                    </button>
-                    <a href="{{x.url}}">
-                    <button style="float: right; color: white;" class="mdl-button mdl-js-button mdl-button--icon">
-                    <i class="material-icons">open_in_browser</i>
-                    </button> 
-                    </a>
+                      <button ng-click="copy(x)" style="float: right" class="mdl-button mdl-js-button mdl-button--icon">
+                      <i class="material-icons">share</i>
+                      </button>
+                      <button ng-click="removeItem($index)" style="float: right" class="mdl-button mdl-js-button mdl-button--icon">
+                      <i class="material-icons">delete</i>
+                      </button>
+                      <a href="{{x.url}}">
+                        <button style="float: right; color: white;" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">open_in_browser</i>
+                        </button> 
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -124,12 +123,14 @@
       <div class="splash-actions">      
         <button style="float: left; color: white;margin: 16px" class="mdl-button mdl-js-button skip">SKIP</button>     
         <button style="float: right; color: white;margin: 16px" class="mdl-button mdl-js-button mdl-button--icon next"><i class="material-icons">keyboard_arrow_right</i></button>
+        <button style="display: none;float: right; color: white;margin: 16px" class="mdl-button mdl-js-button mdl-button--icon prev"><i class="material-icons">keyboard_arrow_left</i></button>
         <div class="dots">
           <i class="material-icons dot-active dot1">lens</i>
           <i class="material-icons dot-disable dot2">lens</i>
         </div>
       </div>
     </div>
+    <!-- Script -->
     <script type="text/javascript" src="assets/js/app.js"></script>
   </body>
 </html>
