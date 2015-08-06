@@ -244,10 +244,10 @@ addButton.addEventListener('click', function() {
 }, false);
 
 
-function shortenUrl(url) {
+function shortenUrl(link) {
   var request = gapi.client.urlshortener.url.insert({
     resource: {
-      longUrl: url
+      longUrl: link
     }
   });
   request.execute(function(response) {
