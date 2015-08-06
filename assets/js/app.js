@@ -119,7 +119,7 @@ function fadeIn(elem, speed) {
                     link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/#' + 'name==' + encodeURIComponent($scope.name) + "&&" + "images==" + link;
                 }
 
-                window.googleApiLoaded = googleApiLoaded(x);
+                window.googleApiLoaded = googleApiLoaded(link);
                 window.prompt("Share the link bellow: ", link);
 
             };
