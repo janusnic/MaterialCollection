@@ -29,7 +29,13 @@
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We sow it in small screens. -->
           <nav class="mdl-navigation">
-            <a style="display: none" class="mdl-navigation__link header-add-button" href="#">
+            <a class="mdl-navigation__link" ng-click="share()">
+              <span>Share Album</span>
+              <button style="color: rgba(0, 0, 0, 0.54);" class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">send</i>
+              </button>
+            </a>
+            <a style="display: none" class="mdl-navigation__link header-add-button">
               <span>Add Photo</span>
               <button style="color: rgba(0, 0, 0, 0.54);" class="mdl-button mdl-js-button mdl-button--icon">
                 <i class="material-icons">insert_photo</i>

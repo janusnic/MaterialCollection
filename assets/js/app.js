@@ -5,6 +5,17 @@ function clearData() {
     location.reload();
 }
 
+function getUrlData(){
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++){
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
 function hasClass(el, cls) {
     return el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
 }
@@ -47,7 +58,7 @@ function fadeIn(elem, speed) {
     angular.module('wallpaper', [])
         //CONTROLLER
         .controller('containerController', ['$scope', function($scope) {
-            $scope.name = 'My Collection';
+            $scope.name = 'Album';
             $scope.images = [];
 
             if (localStorage.getItem('images')) {
@@ -102,6 +113,43 @@ function fadeIn(elem, speed) {
                 imageShow.style.background = 'url(' + url + ') center / cover';
                 fadeIn(imageShow, 1);
             };
+
+            $scope.share = function(){
+                var link = "";
+                var array = $scope.images;
+                for (var i = 0, len = array.length; i < len; i++) {
+                    link += "!url!" + array[i].url;      
+                }
+
+                link = "http://gabrielbarbosanascimento.github.io/MaterialCollection/?" + "name=" + $scope.name + "&" + "images=" + link;
+                window.prompt("Share the link: ", link);
+
+            };
+
+            /* ----- Code for receiving an album link from someone ----- */
+            var nameUrl = getUrlData()['name'];
+            var imagesUrl = decodeURIComponent(getUrlData()['images']);
+
+            //IF GETS AN ALBUMS NAME
+            if(nameUrl === undefined || nameUrl === null){
+                
+            } else{
+                $scope.name = nameUrl;
+            }
+
+            //IF GETS IMAGES
+            if(imagesUrl === undefined || imagesUrl === null){
+                
+            } else{ 
+                var splitUrl = imagesUrl.split('!url!');
+                for (var i = 0; i < splitUrl.length; i++) {
+                    if(i > 0){
+                        $scope.images.push({
+                            url: splitUrl[i]
+                        })
+                    }
+                };
+            }
 
         }]);
 })();
