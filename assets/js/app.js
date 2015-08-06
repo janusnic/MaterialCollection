@@ -61,14 +61,6 @@ function fadeIn(elem, speed) {
             $scope.name = 'Album';
             $scope.images = [];
 
-            if (localStorage.getItem('images')) {
-                $scope.images = JSON.parse(localStorage.getItem('images'));
-            }
-
-            if (localStorage.getItem('name')) {
-                $scope.name = localStorage.getItem('name');
-            }
-
             $scope.addItem = function(item) {
                 var element = document.getElementById("input-url");
 
@@ -118,28 +110,38 @@ function fadeIn(elem, speed) {
                 var link = "";
                 var array = $scope.images;
                 for (var i = 0, len = array.length; i < len; i++) {
-                    link += "!url!" + array[i].url;      
+                    link += '!url!' + array[i].url;      
                 }
 
-                link = "http://gabrielbarbosanascimento.github.io/MaterialCollection/?" + "name=" + $scope.name + "&" + "images=" + link;
-                window.prompt("Share the link: ", link);
+                if(link == ""){
+                    link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/?' + 'name=' + $scope.name;   
+                } else{
+                    link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/?' + 'name=' + $scope.name + "&" + "images=" + link;
+                }
+                
+                window.prompt("Share the link bellow: ", link);
 
             };
 
             /* ----- Code for receiving an album link from someone ----- */
             var nameUrl = getUrlData()['name'];
-            var imagesUrl = decodeURIComponent(getUrlData()['images']);
+            var imagesUrl = getUrlData()['images'];
 
             //IF GETS AN ALBUMS NAME
             if(nameUrl === undefined || nameUrl === null){
-                
+                if (localStorage.getItem('name')) {
+                    $scope.name = localStorage.getItem('name');
+                }
             } else{
                 $scope.name = nameUrl;
+                document.getElementsByClassName('splash')[0].style.display = 'none';
             }
 
             //IF GETS IMAGES
-            if(imagesUrl === undefined || imagesUrl === null){
-                
+            if(imagesUrl === undefined || nameUrl === null){
+                if (localStorage.getItem('images')) {
+                    $scope.images = JSON.parse(localStorage.getItem('images'));
+                }
             } else{ 
                 var splitUrl = imagesUrl.split('!url!');
                 for (var i = 0; i < splitUrl.length; i++) {
