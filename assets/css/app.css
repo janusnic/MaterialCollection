@@ -99,6 +99,9 @@ h6 {
 .mdl-layout__drawer-button {
     color: rgba(0, 0, 0, 0.54) !important;
 }
+.md1-navigation_save-data{
+    display: none;
+}
 /* ----- CONTAINER -----*/
 
 .page-content .container {

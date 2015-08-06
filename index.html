@@ -52,11 +52,14 @@
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" ng-click="changeName()">
             <i class="material-icons" style="position: relative; top: 7px;">edit</i>
-            Rename Collection
+            Rename album
           </a>
-          <a class="mdl-navigation__link" style="color: #F44336" onclick="clearData()">
+          <a id="save-data" class="mdl-navigation__link" style="display: none;">
+            <i class="material-icons" style="position: relative; top: 7px;" ng-click="save()">save</i>
+            Save to cache</a>
+          <a id="clear-data" class="mdl-navigation__link" style="color: #F44336" onclick="clearData()">
             <i class="material-icons" style="position: relative; top: 7px;">delete</i>
-            Clear All Data</a>
+            Clear all data</a>
         </nav>
       </div>
       <!-- CARDS BODY -->
@@ -71,14 +74,14 @@
                   <div class="mdl-card__actions">
                     <span class="demo-card-image__filename">
                       <button ng-click="copy(x)" style="float: right" class="mdl-button mdl-js-button mdl-button--icon">
-                      <i class="material-icons">share</i>
+                        <i class="material-icons">share</i>
                       </button>
-                      <button ng-click="removeItem($index)" style="float: right" class="mdl-button mdl-js-button mdl-button--icon">
-                      <i class="material-icons">delete</i>
+                      <button ng-click="removeItem($index)" style="float: right;" class="mdl-button mdl-js-button mdl-button--icon delete-icon">
+                        <i class="material-icons">delete</i>
                       </button>
                       <a href="{{x.url}}">
                         <button style="float: right; color: white;" class="mdl-button mdl-js-button mdl-button--icon">
-                        <i class="material-icons">open_in_browser</i>
+                          <i class="material-icons">open_in_browser</i>
                         </button> 
                       </a>
                     </span>

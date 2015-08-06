@@ -123,6 +123,17 @@ function fadeIn(elem, speed) {
 
             };
 
+            $scope.save = function(){
+                localStorage.removeItem('images');
+                localStorage.removeItem('name');
+                localStorage.removeItem('visit');
+                localStorage.setItem('images', JSON.stringify($scope.images));
+                localStorage.setItem('name', $scope.name);
+                localStorage.setItem('visit', true);
+                document.getElementById('clear-data').style.display = 'block';           
+                location.reload('http://gabrielbarbosanascimento.github.io/MaterialCollection/');
+            }
+
             /* ----- Code for receiving an album link from someone ----- */
             var nameUrl = getUrlData()['name'];
             var imagesUrl = getUrlData()['images'];
@@ -135,6 +146,8 @@ function fadeIn(elem, speed) {
             } else{
                 $scope.name = decodeURIComponent(nameUrl);
                 document.getElementsByClassName('splash')[0].style.display = 'none';
+                document.getElementById('save-data').style.display = 'block';
+                document.getElementById('clear-data').style.display = 'none';    
             }
 
             //IF GETS IMAGES
@@ -143,6 +156,7 @@ function fadeIn(elem, speed) {
                     $scope.images = JSON.parse(localStorage.getItem('images'));
                 }
             } else{ 
+                //Divide the urls
                 var splitUrl = imagesUrl.split('!url!');
                 for (var i = 0; i < splitUrl.length; i++) {
                     if(i > 0){
