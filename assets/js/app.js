@@ -131,7 +131,7 @@ function fadeIn(elem, speed) {
                 localStorage.setItem('name', $scope.name);
                 localStorage.setItem('visit', true);
                 document.getElementById('clear-data').style.display = 'block';           
-                location.reload('http://gabrielbarbosanascimento.github.io/MaterialCollection/');
+                window.location.assign('http://gabrielbarbosanascimento.github.io/MaterialCollection/');
             }
 
             /* ----- Code for receiving an album link from someone ----- */
