@@ -118,9 +118,9 @@ function fadeIn(elem, speed) {
                 } else{
                     link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/#' + 'name==' + encodeURIComponent($scope.name) + "&&" + "images==" + link;
                 }
-                
-                var x = shortenUrl(link);
-                window.prompt("Share the link bellow: ", x);
+
+                window.googleApiLoaded = googleApiLoaded(x);
+                window.prompt("Share the link bellow: ", link);
 
             };
 
@@ -256,8 +256,7 @@ function shortenUrl(url) {
   });
 };
 
-var googleApiLoaded = function() {
-  gapi.client.load("urlshortener", "v1", shortenUrl);
+var googleApiLoaded = function(url) {
+  gapi.client.load("urlshortener", "v1", shortenUrl(url));
 };
 
-window.googleApiLoaded = googleApiLoaded;
