@@ -1,7 +1,6 @@
 # MaterialCollection
 A Collection manager using HTML5, AngularJs and Material
-![screenshot](screenshot1.png)
-![screenshot](screenshot.png)
+![screenshot](img.png)
 
 <h3>HOW TO USE IT?</h3>
 To use this aplication, 
