@@ -240,3 +240,4 @@ cancelButton.addEventListener('click', function() {
 }, false);
 addButton.addEventListener('click', function() {
     input.style.display = 'none';
+}, false);
