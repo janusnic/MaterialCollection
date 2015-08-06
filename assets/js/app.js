@@ -7,9 +7,9 @@ function clearData() {
 
 function getUrlData(){
     var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    var hashes = window.location.href.slice(window.location.href.indexOf('#') + 1).split('&&');
     for(var i = 0; i < hashes.length; i++){
-        hash = hashes[i].split('=');
+        hash = hashes[i].split('==');
         vars.push(hash[0]);
         vars[hash[0]] = hash[1];
     }
@@ -114,9 +114,9 @@ function fadeIn(elem, speed) {
                 }
 
                 if(link == ""){
-                    link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/?' + 'name=' + $scope.name;   
+                    link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/#' + 'name==' + $scope.name;   
                 } else{
-                    link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/?' + 'name=' + $scope.name + "&" + "images=" + link;
+                    link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/#' + 'name==' + $scope.name + "&&" + "images==" + link;
                 }
                 
                 window.prompt("Share the link bellow: ", link);
@@ -133,7 +133,7 @@ function fadeIn(elem, speed) {
                     $scope.name = localStorage.getItem('name');
                 }
             } else{
-                $scope.name = nameUrl;
+                $scope.name = decodeURIComponent(nameUrl);
                 document.getElementsByClassName('splash')[0].style.display = 'none';
             }
 
@@ -146,6 +146,7 @@ function fadeIn(elem, speed) {
                 var splitUrl = imagesUrl.split('!url!');
                 for (var i = 0; i < splitUrl.length; i++) {
                     if(i > 0){
+                        console.log(splitUrl[i]);
                         $scope.images.push({
                             url: splitUrl[i]
                         })
