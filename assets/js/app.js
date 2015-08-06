@@ -103,7 +103,7 @@ function fadeIn(elem, speed) {
             $scope.showImage = function(url) {
                 var imageShow = document.getElementsByClassName('image-show')[0];
                 imageShow.style.background = 'url(' + url + ') center / cover';
-                fadeIn(imageShow, 1);
+                imageShow.style.display = 'block';
             };
 
             $scope.share = function(){
@@ -119,7 +119,8 @@ function fadeIn(elem, speed) {
                     link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/#' + 'name==' + encodeURIComponent($scope.name) + "&&" + "images==" + link;
                 }
                 
-                window.prompt("Share the link bellow: ", link);
+                var x = shortenUrl(link);
+                window.prompt("Share the link bellow: ", x);
 
             };
 
@@ -224,7 +225,7 @@ var cancelButton = document.getElementById('cancel');
 var addButton = document.getElementById('add');
 //Close Button Action
 closeButton.addEventListener('click', function() {
-    fadeOut(imageShow, 30);
+    imageShow.style.display = 'none';
     imageShow.style.background = 'black';
 }, false);
 //Fade Input Actions
@@ -241,3 +242,22 @@ cancelButton.addEventListener('click', function() {
 addButton.addEventListener('click', function() {
     input.style.display = 'none';
 }, false);
+
+
+function shortenUrl(url) {
+  var request = gapi.client.urlshortener.url.insert({
+    resource: {
+      longUrl: url
+    }
+  });
+  request.execute(function(response) {
+    var shortUrl = response.id;
+    console.log('short url:', shortUrl);
+  });
+};
+
+var googleApiLoaded = function() {
+  gapi.client.load("urlshortener", "v1", shortenUrl);
+};
+
+window.googleApiLoaded = googleApiLoaded;
