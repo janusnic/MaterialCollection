@@ -100,7 +100,7 @@ function fadeIn(elem, speed) {
             $scope.showImage = function(url) {
                 var imageShow = document.getElementsByClassName('image-show')[0];
                 imageShow.style.background = 'url(' + url + ') center / cover';
-                fadeIn(imageShow, 5);
+                fadeIn(imageShow, 1);
             };
 
         }]);
