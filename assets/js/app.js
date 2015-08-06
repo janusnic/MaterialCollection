@@ -119,7 +119,6 @@ function fadeIn(elem, speed) {
                     link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/#' + 'name==' + encodeURIComponent($scope.name) + "&&" + "images==" + link;
                 }
 
-                window.googleApiLoaded = googleApiLoaded(link);
                 window.prompt("Share the link bellow: ", link);
 
             };
@@ -241,22 +240,3 @@ cancelButton.addEventListener('click', function() {
 }, false);
 addButton.addEventListener('click', function() {
     input.style.display = 'none';
-}, false);
-
-
-function shortenUrl(link) {
-  var request = gapi.client.urlshortener.url.insert({
-    resource: {
-      longUrl: link
-    }
-  });
-  request.execute(function(response) {
-    var shortUrl = response.id;
-    console.log('short url:', shortUrl);
-  });
-};
-
-var googleApiLoaded = function(url) {
-  gapi.client.load("urlshortener", "v1", shortenUrl(url));
-};
-
