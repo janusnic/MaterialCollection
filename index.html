@@ -11,9 +11,10 @@
     <link rel="icon" href="assets/img/icon.png" />
     <meta name="description" content="A Collection manager using HTML5, AngularJs and Material Design">
     <meta name="keywords" content="material, design, wallpapers, collection, save, offline, angular, app">
-    <!-- IMPORTS LIBS -->
+    <!-- IMPORTS OS LIBS -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- APP LIBS-->
     <link rel="stylesheet" type="text/css" href="assets/css/app.css">
@@ -27,11 +28,11 @@
           <span class="mdl-layout-title">{{name}}</span>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
-          <!-- Navigation. We sow it in small screens. -->
+          <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation">
             <a style="display: none" class="mdl-navigation__link header-add-button" href="#">
               <span>Add Photo</span>
-              <button style="color: rgba(0, 0, 0, 0.54);" class="mdl-button mdl-js-button mdl-button--icon">
+              <button style="color: white;" class="mdl-button mdl-js-button mdl-button--icon">
                 <i class="material-icons">insert_photo</i>
               </button>
             </a>
@@ -130,7 +131,6 @@
       </div>
     </div>
     <!-- Script -->
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
     <script type="text/javascript" src="assets/js/app.js"></script>
   </body>
 </html>
