@@ -238,7 +238,13 @@ h6 {
     }
 }
 @media (max-width: 600px) {
-    .header-add-button span {
+    .header-add-button,
+    .header-share-button{
+        padding: 4px !important;
+    } 
+
+    .header-add-button span,
+    .header-share-button span {
         display: none !important;
     }
     .splash h2,

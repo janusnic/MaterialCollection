@@ -114,9 +114,9 @@ function fadeIn(elem, speed) {
                 }
 
                 if(link == ""){
-                    link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/#' + 'name==' + $scope.name;   
+                    link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/#' + 'name==' + encodeURIComponent($scope.name);   
                 } else{
-                    link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/#' + 'name==' + $scope.name + "&&" + "images==" + link;
+                    link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/#' + 'name==' + encodeURIComponent($scope.name) + "&&" + "images==" + link;
                 }
                 
                 window.prompt("Share the link bellow: ", link);
@@ -146,7 +146,6 @@ function fadeIn(elem, speed) {
                 var splitUrl = imagesUrl.split('!url!');
                 for (var i = 0; i < splitUrl.length; i++) {
                     if(i > 0){
-                        console.log(splitUrl[i]);
                         $scope.images.push({
                             url: splitUrl[i]
                         })
