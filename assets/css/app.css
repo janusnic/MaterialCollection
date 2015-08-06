@@ -1,8 +1,23 @@
+/* ----- Reset ----- */
+
+* {
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
+    list-style: none;
+    border: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 /* ----- General Page Definitions ----- */
 
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
 body {
-    background: whitesmoke;
-    margin: 0 auto;
+    background: white;
 }
 a,
 a:link,
@@ -35,8 +50,6 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: inherit;
-    font-weight: 500;
     line-height: 1.1;
     color: inherit;
 }
@@ -47,11 +60,14 @@ h6 {
     margin-left: auto;
 }
 .container:before,
-.container:after {
+.container:after,
+.row:before,
+.row:after {
     display: table;
     content: " ";
 }
-.container:after {
+.container:after,
+.row:after {
     clear: both;
 }
 .row {
@@ -74,7 +90,14 @@ h6 {
 /* ----- HEADER -----*/
 
 .mdl-layout__header {
-    background-color: #4B4A5A;
+    background-color: #FAFAFA;
+    color: rgba(0, 0, 0, 0.86);
+}
+.mdl-layout__header span {
+    color: rgba(0, 0, 0, 0.86);
+}
+.mdl-layout__drawer-button {
+    color: rgba(0, 0, 0, 0.54) !important;
 }
 /* ----- CONTAINER -----*/
 
@@ -95,13 +118,13 @@ h6 {
     color: #fff;
 }
 .thumb {
-    margin-bottom: 15px;
+    margin-bottom: 22px;
 }
 #fab {
     position: fixed;
     bottom: 12px;
-    right: 12px;
-    background: #4B4A5A;
+    right: 22px;
+    background: rgb(63, 81, 181);
     z-index: 555;
 }
 /* ----- IMAGE GALLERY SHOW -----*/
