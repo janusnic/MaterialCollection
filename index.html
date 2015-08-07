@@ -56,7 +56,7 @@
           <a id="save-data" class="mdl-navigation__link" style="display: none;" ng-click="save()">
             <i class="material-icons" style="position: relative; top: 7px;">save</i>
             Save to cache</a>
-          <a id="clear-data" class="mdl-navigation__link" style="color: #F44336" onclick="clearData()">
+          <a id="clear-data" class="mdl-navigation__link" style="color: #F44336" onclick="reset()">
             <i class="material-icons" style="position: relative; top: 7px;">delete</i>
             Clear all data</a>
         </nav>
@@ -102,13 +102,13 @@
     <div id="input">
       <div class="mdl-card mdl-shadow--8dp">
         <div style="color: #727272;padding: 16px 16px 0 16px" class="mdl-card__title">Add An Image</div>
-        <form style="padding: 16px 16px 0 16px" action="#">
+        <form style="padding: 16px 16px 0 16px">
           <div id="input-url" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
             <input class="mdl-textfield__input" ng-model="images.url" type="text" id="sample3" />
             <label style="color: rgb(63,81,181); font-weight: 100" class="mdl-textfield__label" for="sample3">Url to image...</label>       
           </div>
-          <button style="color: #727272" id="cancel" class="mdl-button mdl-js-button">Cancel</button> 
-          <button id="add" style="float: right" ng-click="addItem(images.url)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Add</button>
+          <button style="color: #727272" id="cancel" type="button" class="mdl-button mdl-js-button">Cancel</button> 
+          <button id="add" style="float: right" type="button" ng-click="addItem(images.url)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Add</button>
         </form>
       </div>
     </div>
@@ -141,6 +141,5 @@
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <script type="text/javascript" src="assets/js/app.js"></script>
-    <script src="https://apis.google.com/js/client.js"></script>
   </body>
 </html>
