@@ -96,10 +96,10 @@ h6 {
 .mdl-layout__header span {
     color: rgba(0, 0, 0, 0.86);
 }
-.mdl-layout__drawer-button {
-    color: rgba(0, 0, 0, 0.54) !important;
+.mdl-navigation__link{
+    padding: 0 4px !important;
 }
-.md1-navigation_save-data{
+#save-data{
     display: none;
 }
 /* ----- CONTAINER -----*/
@@ -144,7 +144,7 @@ h6 {
 }
 /* ----- IMAGE ADD INPUT -----*/
 
-#input {
+.input {
     position: fixed;
     top: 0;
     left: 0;
@@ -153,16 +153,17 @@ h6 {
     z-index: 777;
     display: none;
 }
-#input .mdl-card {
+.input .mdl-card {
     width: 400px;
     height: auto;
     margin-top: 28px;
     margin-left: auto;
     margin-right: auto;
 }
-#input .mdl-textfield {
+.input .mdl-textfield {
     width: 100%;
 }
+
 /* ----- SPLASH SCREEN -----*/
 
 .splash {
@@ -241,11 +242,6 @@ h6 {
     }
 }
 @media (max-width: 600px) {
-    .header-add-button,
-    .header-share-button{
-        padding: 4px !important;
-    } 
-
     .header-add-button span,
     .header-share-button span {
         display: none !important;
@@ -363,5 +359,11 @@ h6 {
     }
     .col-md-1 {
         width: 8.33333333%;
+    }
+}
+
+@media (max-width: 1024px){
+    .mdl-layout__header-row{
+        padding: 0 16px 0 16px;
     }
 }

@@ -29,7 +29,7 @@
           <!-- Navigation. We sow it in small screens. -->
           <nav class="mdl-navigation">
             <a class="mdl-navigation__link header-share-button" ng-click="share()">
-              <span>Share Album</span>
+              <span>Share</span>
               <button style="color: rgba(0, 0, 0, 0.54);" class="mdl-button mdl-js-button mdl-button--icon">
                 <i class="material-icons">send</i>
               </button>
@@ -40,34 +40,27 @@
                 <i class="material-icons">insert_photo</i>
               </button>
             </a>
+            <!-- Right aligned menu below button -->
+            <button id="demo-menu-lower-right"
+                    class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                for="demo-menu-lower-right">
+              <li class="mdl-menu__item" id="rename-album">Rename album</li>
+              <li class="mdl-menu__item" id="save-data" ng-click="save()">Save album to cache</li>
+              <li class="mdl-menu__item" id="clear-data" onclick="reset()">Clear Data</li>
+            </ul>
           </nav>
         </div>
       </header>
-      <!-- DRAWER -->
-      <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">
-          <div style="display: inline-block">Settings</div>
-        </span>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" ng-click="changeName()">
-            <i class="material-icons" style="position: relative; top: 7px;">edit</i>
-            Rename album
-          </a>
-          <a id="save-data" class="mdl-navigation__link" style="display: none;" ng-click="save()">
-            <i class="material-icons" style="position: relative; top: 7px;">save</i>
-            Save to cache</a>
-          <a id="clear-data" class="mdl-navigation__link" style="color: #F44336" onclick="reset()">
-            <i class="material-icons" style="position: relative; top: 7px;">delete</i>
-            Clear all data</a>
-        </nav>
-      </div>
       <!-- CARDS BODY -->
       <main class="mdl-layout__content">
         <button id="fab" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--colored"><i class="material-icons">insert_photo</i></button>
         <div class="page-content">
           <div class="container">
             <div class="row" ng-show="images.length">
-              <div class="thumb col-md-4" style="cursor: pointer" ng-repeat="x in images track by $index">
+              <div class="thumb col-md-4" style="cursor: pointer" ng-repeat="x in images">
                 <div class="mdl-card mdl-shadow--2dp" ng-style="{'background':'url({{x.url}}) center / cover'}">
                   <div class="mdl-card--expand" ng-click="showImage(x.url)"></div>
                   <div class="mdl-card__actions">
@@ -99,16 +92,29 @@
       </button>
     </div>
     <!-- URL INPUT-->
-    <div id="input">
+    <div class="input">
       <div class="mdl-card mdl-shadow--8dp">
         <div style="color: #727272;padding: 16px 16px 0 16px" class="mdl-card__title">Add An Image</div>
         <form style="padding: 16px 16px 0 16px">
-          <div id="input-url" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" ng-model="images.url" type="text" id="sample3" />
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+            <input class="mdl-textfield__input" autocomplete="off" ng-model="images.url" type="text" id="sample3" />
             <label style="color: rgb(63,81,181); font-weight: 100" class="mdl-textfield__label" for="sample3">Url to image...</label>       
           </div>
-          <button style="color: #727272" id="cancel" type="button" class="mdl-button mdl-js-button">Cancel</button> 
-          <button id="add" style="float: right" type="button" ng-click="addItem(images.url)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Add</button>
+          <button style="color: #727272" type="button" class="mdl-button mdl-js-button cancel">Cancel</button> 
+          <button style="float: right" type="button" ng-click="addItem(images.url)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored add">Add</button>
+        </form>
+      </div>
+    </div>
+    <!-- ALBUM NAME INPUT-->
+    <div class="input">
+      <div class="mdl-card mdl-shadow--8dp">
+        <div style="color: #727272;padding: 16px 16px 0 16px" class="mdl-card__title">Rename Album</div>
+        <form class="form" style="padding: 16px 16px 0 16px">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+            <input class="mdl-textfield__input" autocomplete="off" ng-model="name" type="text" id="sample3" />
+            <label style="color: rgb(63,81,181); font-weight: 100" class="mdl-textfield__label" for="sample3">Album's name...</label>       
+          </div>
+          <button style="float: right" type="button" ng-click="changeName(name)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored add">Add</button>
         </form>
       </div>
     </div>

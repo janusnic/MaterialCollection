@@ -118,19 +118,43 @@ function fadeOut(elem, speed) {
              *  @param {string} The link of the image that will be added 
              */
             $scope.addItem = function(imgUrl) {
-                var element = document.getElementById("input-url");
+                var input = document.getElementsByClassName('mdl-textfield')[0];
 
-                if (hasClass(element, "is-dirty")) {
-                    $scope.images.push({
-                        url: imgUrl
-                    });
+                if (hasClass(input, 'is-dirty')) {
+                    // If the image is new, add to the album
+                    if (!hasUrl(imgUrl)) {
+                        $scope.images.push({
+                            url: imgUrl
+                        });
+                    } else {
+                        alert('This image has already been added');
+                    }
 
                     // If not editing a shared Url, do cache
                     if (code[1] === false) {
                         setItem('images', JSON.stringify($scope.images));
                     }
+
+                    // Clear the input
+                    document.getElementsByClassName('mdl-textfield__input')[0].value = '';
+                    document.getElementsByClassName('mdl-textfield')[0].classList.remove('is-dirty');
                 }
             };
+
+            /**
+             *  Check on the array images if the url is not added yet
+             *  @param {string} The url to look for in the array
+             *  @return {boolean} if it's alredy exist or not
+             */
+            function hasUrl(link){
+                for (var i = 0; i < $scope.images.length; i++) {
+                    if($scope.images[i].url == link){
+                        return true;
+                    }
+                }
+
+                return false;
+            }
 
             /**
              *  Remove one image to the array and from the container
@@ -147,15 +171,17 @@ function fadeOut(elem, speed) {
             /**
              *  Change the name of the album and save it on the cache
              */
-            $scope.changeName = function() {
-                var nome = prompt("Set the name of this collection!");
-
+            $scope.changeName = function(nome) {
                 if (nome !== null && nome !== '') {
                     $scope.name = nome;
                     // If not editing a shared Url, do cache
                     if (code[0] === false) {
                         setItem('name', nome);
                     } 
+
+                    // Clear the input
+                    document.getElementsByClassName('mdl-textfield__input')[1].value = '';
+                    document.getElementsByClassName('mdl-textfield')[1].classList.remove('is-dirty');
                 }
             };
 
@@ -305,11 +331,12 @@ prevButton.addEventListener('click', function() {
 /* ----- CONTAINER CODE -----*/
 var closeButton = document.getElementById('close');
 var imageShow = document.getElementsByClassName('image-show')[0];
-var input = document.getElementById('input');
+var input = document.getElementsByClassName('input');
 var fab = document.getElementById('fab');
 var headerAddButton = document.getElementsByClassName('header-add-button')[0];
-var cancelButton = document.getElementById('cancel');
-var addButton = document.getElementById('add');
+var renameButton = document.getElementById('rename-album');
+var cancelButton = document.getElementsByClassName('cancel');
+var addButton = document.getElementsByClassName('add');
 
 closeButton.addEventListener('click', function() {
     imageShow.style.display = 'none';
@@ -317,16 +344,25 @@ closeButton.addEventListener('click', function() {
 }, false);
 
 fab.addEventListener('click', function() {
-    fadeIn(input, 10);
+    fadeIn(input[0], 10);
 }, false);
+
 headerAddButton.addEventListener('click', function() {
-    fadeIn(input, 10);
+    fadeIn(input[0], 10);
 }, false);
 
-cancelButton.addEventListener('click', function() {
-    input.style.display = 'none';
+renameButton.addEventListener('click', function() {
+    fadeIn(input[1], 10);
 }, false);
 
-addButton.addEventListener('click', function() {
-    input.style.display = 'none';
+cancelButton[0].addEventListener('click', function() {
+    input[0].style.display = 'none';
+}, false);
+
+addButton[0].addEventListener('click', function() {
+    input[0].style.display = 'none';
+}, false);
+
+addButton[1].addEventListener('click', function() {
+    input[1].style.display = 'none';
 }, false);
