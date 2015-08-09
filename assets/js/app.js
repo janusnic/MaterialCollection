@@ -259,7 +259,7 @@ function fadeOutUp(elem) {
 
                 } else {
                     // If there's not previous cache, the photos of shared album can be painless added
-                    for (var i = 0; i < x.length; i++) {
+                    for (var i = 0; i < $scope.images.length; i++) {
                         delete $scope.images[i].$$hashKey;
                         data.push($scope.images[i]);
                     };
