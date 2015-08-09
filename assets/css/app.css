@@ -141,6 +141,16 @@ h6 {
     z-index: 666;
     background: black;
     display: none;
+
+    -webkit-animation-duration: 0.3s !important;
+    -moz-animation-duration: 0.3s !important;    
+    -o-animation-duration: 0.3s !important;
+    animation-duration: 0.3s !important;
+
+    -webkit-animation-delay: 0s;
+    -moz-animation-delay: 0s;    
+    -o-animation-delay: 0s;
+    animation-delay: 0s;
 }
 /* ----- IMAGE ADD INPUT -----*/
 
@@ -153,6 +163,16 @@ h6 {
     z-index: 777;
     display: none;
     background: rgba(0, 0, 0, 0.3);
+
+    -webkit-animation-duration: 0.3s !important;
+    -moz-animation-duration: 0.3s !important;    
+    -o-animation-duration: 0.3s !important;
+    animation-duration: 0.3s !important;
+
+    -webkit-animation-delay: 0s;
+    -moz-animation-delay: 0s;    
+    -o-animation-delay: 0s;
+    animation-delay: 0s;
 }
 .input .mdl-card {
     width: 400px;

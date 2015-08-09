@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- APP LIBS-->
     <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.min.css">
   </head>
   <body ng-controller="containerController">
     <!-- GENERAL CONTAINER -->
@@ -48,7 +49,7 @@
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                 for="demo-menu-lower-right">
               <li class="mdl-menu__item" id="rename-album">Rename album</li>
-              <li class="mdl-menu__item" id="save-data" ng-click="save()">Save album to cache</li>
+              <li class="mdl-menu__item" id="save-data" ng-click="save()">Save all those to my album</li>
               <li class="mdl-menu__item" id="clear-data" onclick="reset()">Clear Data</li>
             </ul>
           </nav>
@@ -86,13 +87,13 @@
       </main>
     </div>
     <!-- IMAGE OPENING -->
-    <div class="image-show">
+    <div class="image-show animated">
       <button id="close" style="background: white; margin: 8px; float: right;" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
       <i class="material-icons">close</i>
       </button>
     </div>
     <!-- URL INPUT-->
-    <div class="input">
+    <div class="input animated">
       <div class="mdl-card mdl-shadow--8dp">
         <div style="color: #727272;padding: 16px 16px 0 16px" class="mdl-card__title">Add An Image</div>
         <form style="padding: 16px 16px 0 16px">
@@ -106,7 +107,7 @@
       </div>
     </div>
     <!-- ALBUM NAME INPUT-->
-    <div class="input">
+    <div class="input animated">
       <div class="mdl-card mdl-shadow--8dp">
         <div style="color: #727272;padding: 16px 16px 0 16px" class="mdl-card__title">Rename Album</div>
         <form class="form" style="padding: 16px 16px 0 16px">

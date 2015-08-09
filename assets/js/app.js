@@ -67,40 +67,40 @@ function swapClasses(elem, class1, class2) {
 /**
  *  A fadeIn animation effect
  *  @param {HTMLElement} The element desired 
- *  @param {int} The speed of the animation
  */
-function fadeIn(elem, speed) {
-    elem.style.opacity = 0;
-
-    var fadeEffect = setInterval(function() {
-        if (elem.style.opacity > 0.9) {
-            clearInterval(fadeEffect);
-        } else {
-            elem.style.opacity = +elem.style.opacity + 0.1;
-        }
-    }, speed);
-
+function fadeIn(elem) {
     elem.style.display = 'block';
+    elem.classList.remove('fadeOut');
+    elem.classList.add('fadeIn');
+}
+
+/**
+ *  A zoomIn animation effect
+ *  @param {HTMLElement} The element desired 
+ */
+function fadeInUp(elem) {
+    elem.style.display = 'block';
+    elem.classList.remove('fadeOutUp');
+    elem.classList.add('fadeInUp');
 }
 
 /**
  *  A fadeOut animation effect
  *  @param {HTMLElement} The element desired 
- *  @param {int} The speed of the animation
  */
-function fadeOut(elem, speed) {
-    var fadeEffect = setInterval(function() {
-        if (!elem.style.opacity) {
-            elem.style.opacity = 1;
-        }
-        if (elem.style.opacity < 0.1) {
-            clearInterval(fadeEffect);
-        } else {
-            elem.style.opacity -= 0.1;
-        }
-    }, speed);
+function fadeOut(elem) {
+    elem.classList.remove('fadeIn');
+    elem.classList.add('fadeOut');
+}
 
-    elem.style.display = 'none';
+/**
+ *  A zoomOut animation effect
+ *  @param {HTMLElement} The element desired 
+ */
+function fadeOutUp(elem) {
+    elem.style.display = 'block';
+    elem.classList.remove('fadeInUp');
+    elem.classList.add('fadeOutUp');
 }
 /* ----- ANGULAR CODES ----- */
 (function() {
@@ -200,7 +200,7 @@ function fadeOut(elem, speed) {
             $scope.showImage = function(url) {
                 var imageShow = document.getElementsByClassName('image-show')[0];
                 imageShow.style.background = 'url(' + url + ') center / cover';
-                imageShow.style.display = 'block';
+                fadeInUp(imageShow);
             };
 
             /**
@@ -224,11 +224,49 @@ function fadeOut(elem, speed) {
             };
 
             /**
-             * Save all the data created to the localStorage cache
+             * Save an shared album's photos to the localStorage cache, not overwritting the current data
              */
             $scope.save = function(){
-                setItem('images', JSON.stringify($scope.images));
-                setItem('name', $scope.name);
+                var data = [];
+                var cache = localStorage.getItem('images');
+                var x = JSON.parse(cache);
+
+                // If there's photos on the cache, do not overwrite them !
+                if (cache !== null) {
+                    // Save first the cache on the array
+                    for (var i = 0; i < x.length; i++) {
+                        delete x[i].$$hashKey;
+                        data.push(x[i]);
+                    };
+
+                    // Look for if some photo's url on the shared album is not already included on the cache
+                    for (var i = 0; i < $scope.images.length; i++) {
+                        delete $scope.images[i].$$hashKey;
+                        var equal = false;
+
+                        // Compare urls with the cache
+                        for (var j = 0; j < x.length; j++) {
+                            if ($scope.images[i].url == x[j].url){
+                                equal = true;
+                            }
+                        }; 
+
+                        // If the url of the photo is not the same, it can be included on the array
+                        if (!equal) {
+                            data.push($scope.images[i]);     
+                        }
+                    };
+
+                } else {
+                    // If there's not previous cache, the photos of shared album can be painless added
+                    for (var i = 0; i < x.length; i++) {
+                        delete $scope.images[i].$$hashKey;
+                        data.push($scope.images[i]);
+                    };
+                }
+
+                // Save the data on the cache and reload
+                setItem('images', JSON.stringify(data));
                 setItem('visit', true);
                 document.getElementById('clear-data').style.display = 'block';           
                 window.location.assign('http://gabrielbarbosanascimento.github.io/MaterialCollection/');
@@ -312,8 +350,8 @@ nextButton.addEventListener('click', function() {
     swapClasses(document.getElementsByClassName('dot2')[0], 'dot-disable', 'dot-active');
     nextButton.style.display = 'none';
     splashImg1.style.display = 'none';
-    fadeIn(prevButton, 25);
-    fadeIn(splashImg2, 30);
+    fadeIn(prevButton);
+    fadeIn(splashImg2);
 }, false);
 
 prevButton.addEventListener('click', function() {
@@ -324,8 +362,8 @@ prevButton.addEventListener('click', function() {
     swapClasses(document.getElementsByClassName('dot2')[0], 'dot-active', 'dot-disable');
     prevButton.style.display = 'none';
     splashImg2.style.display = 'none';
-    fadeIn(nextButton, 25);
-    fadeIn(splashImg1, 30);
+    fadeIn(nextButton);
+    fadeIn(splashImg1);
 }, false);
 
 /* ----- CONTAINER CODE -----*/
@@ -339,20 +377,21 @@ var cancelButton = document.getElementsByClassName('cancel');
 var addButton = document.getElementsByClassName('add');
 
 closeButton.addEventListener('click', function() {
+    fadeOutUp(imageShow);
     imageShow.style.display = 'none';
     imageShow.style.background = 'black';
 }, false);
 
 fab.addEventListener('click', function() {
-    fadeIn(input[0], 10);
+    fadeIn(input[0]);
 }, false);
 
 headerAddButton.addEventListener('click', function() {
-    fadeIn(input[0], 10);
+    fadeIn(input[0]);
 }, false);
 
 renameButton.addEventListener('click', function() {
-    fadeIn(input[1], 10);
+    fadeIn(input[1]);
 }, false);
 
 cancelButton[0].addEventListener('click', function() {
