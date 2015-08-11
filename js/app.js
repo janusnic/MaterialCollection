@@ -158,6 +158,74 @@ angular.module('wallpaper', [])
             window.location.assign('http://gabrielbarbosanascimento.github.io/MaterialCollection/');
         };
 
+        /* ----- FUNCTIONS OF SELECTING IMAGES ----- */
+        var actionCardBar = document.getElementsByClassName('mdl-card__actions');
+        var indexOfSelecteds = [];
+
+        /**
+         *  Function for select one or more elements from the repeat
+         *  @param {HTMLElement} The object which have been selected
+         *  @param {int} The index of the selected image
+         */
+        $scope.select = function($event, index){
+            var target = $event.currentTarget;
+
+            if (hasClass(target, 'not-selected')) {
+                selectItems('select');
+                swapClasses(target, 'not-selected', 'selected');
+                target.getElementsByTagName('i')[0].innerHTML = 'check_circle';
+                actionCardBar[index].style.background = '#5C6BC0';
+                indexOfSelecteds.push(index);
+            } else {
+                selectItems('remove');
+                swapClasses(target, 'selected', 'not-selected');
+                target.getElementsByTagName('i')[0].innerHTML = 'check';
+                actionCardBar[index].style.background = 'rgba(0, 0, 0, 0.2)';
+
+                // Check for the select item on the array, and remove it
+                for(var i = 0, len = indexOfSelecteds.length; i < len; i++){
+                    if (indexOfSelecteds[i] == index){
+                        indexOfSelecteds.splice(i, 1);   
+                    }
+                }
+                
+            }
+            // Sort the array in reverse, to not mess in delectio
+            indexOfSelecteds.sort().reverse();
+        }
+
+        /**
+         *  Remove all the selected images
+         */
+        $scope.deleteSelected = function(){
+            for(var i = 0, len = indexOfSelecteds.length; i < len; i++){
+                $scope.removeItem(indexOfSelecteds[i]); 
+                selectItems('remove');
+            }
+        }
+
+        /** 
+         *  Clear all the selected objects, unselecting them
+         */
+        $scope.clearSelection = function(){
+            var sel = document.getElementsByClassName('select');
+
+            for(var i = 0, len = indexOfSelecteds.length; i < len; i++){
+                actionCardBar[i].style.background = 'rgba(0, 0, 0, 0.2)';
+
+                if (hasClass(sel[i], 'selected')){
+                    swapClasses(sel[i], 'selected', 'not-selected');
+                    sel[i].getElementsByTagName('i')[0].innerHTML = 'check';
+                }
+
+                selectItems('remove');
+            }
+
+            indexOfSelecteds = [];
+        }
+
+        /* ------------------------------------------------------------------- */
+
         /**
          *  Function for the dealing on opening links, checking if it's the regular url of if it's a shared url link
          *  @retun {Array<boolean>} return if the link openend constains an album name or images,
@@ -349,6 +417,7 @@ var headerShareButton = document.getElementsByClassName('header-share-button')[0
 var renameButton = document.getElementById('rename-album');
 var cancelButton = document.getElementsByClassName('cancel');
 var addButton = document.getElementsByClassName('add');
+var selectImg = document.getElementsByClassName('select');
 
 closeButton.addEventListener('click', function() {
     imageShow.style.display = 'none';
@@ -390,3 +459,27 @@ addButton[1].addEventListener('click', function() {
 addButton[2].addEventListener('click', function() {
     input[2].style.display = 'none';
 }, false);
+
+/* ----- Select Options ----- */
+var options = document.getElementById('options');
+var amount = document.getElementById('amount-selected');
+var q = 0;
+
+function selectItems(type){
+    options.style.display = 'block';
+    options.classList.add('fadeInDown');
+
+    if (type === 'select'){
+        q++;
+    } else{
+        q--;
+    }
+
+    if (q <= 0) {
+        q = 0;
+        options.classList.remove('fadeInDown');
+        options.style.display = 'none';
+    }
+    
+    amount.innerHTML = q + ' selected';
+}

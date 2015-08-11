@@ -54,6 +54,18 @@
         </nav>
       </div>
     </header>
+    <div id="options" class="mdl-color--indigo-400 animated">
+      <div class="mdl-layout__header-row">
+        <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="clearSelection()">
+          <i class="material-icons">arrow_back</i>
+        </button>
+        <span id="amount-selected" class="mdl-layout-title" style="padding-left: 4px">Selected</span>
+        <div class="mdl-layout-spacer"></div>
+        <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="deleteSelected()">
+          <i class="material-icons">delete</i>
+        </button>
+      </div>
+    </div>
     <!-- CARDS BODY -->
     <main class="mdl-layout__content">
       <button id="fab" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--colored"><i class="material-icons">insert_photo</i></button>
@@ -73,6 +85,9 @@
                           <i class="material-icons">open_in_browser</i>
                         </button> 
                       </a>
+                       <button style="float: right; color: white;" ng-click="select($event, $index)" class="mdl-button mdl-js-button mdl-button--icon select not-selected">
+                          <i class="material-icons">check</i>
+                        </button> 
                     </span>
                 </div>
               </div>
