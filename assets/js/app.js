@@ -1,107 +1,3 @@
-/**
- *  Add data to the localStorage cache
- *  @param {string} A keyname to get some data from the cache
- *  @param {Object} The data that will be stored
- */
-function setItem(key, data){
-    localStorage.setItem(key, data);
-}
-
-/**
- *  Remove data from the localStorage cache
- *  @param {string} A keyname to get some data from the cache
- *  @param {Object} The data that will be returned
- */
-function removeItem(key, data){
-    localStorage.removeItem(key, data);
-}
-
-/**
- *  Clear all the cache data from the localStorage and reload the page
- */
-function reset() {
-    removeItem('images');
-    removeItem('name');
-    removeItem('visit');
-    location.reload();
-}
-
-/**
- *  Gets the link of a shared album and splits it as attributes, storing it in a array
- *  @return {Array<string>} The atributes of the custom Url
- */
-function getUrlData(){
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('#') + 1).split('&&');
-
-    for(var i = 0; i < hashes.length; i++){
-        hash = hashes[i].split('==');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
-    }
-
-    return vars;
-}
-
-/**
- *  Checks if an element has an specific class
- *  @param {HTMLElement} The element to check if contains some class
- *  @param {string} The name of the class to look for in the element
- *  @return {boolean}
- */
-function hasClass(el, cls) {
-    return el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
-}
-
-/**
- *  Swich one class for another in some element
- *  @param {HTMLElement} The element desired to swap classes 
- *  @param {string} The name of the class that will be replaced
- *  @param {String} The name of the class that will replace the other class
- */
-function swapClasses(elem, class1, class2) {
-    elem.classList.remove(class1);
-    elem.classList.add(class2);
-}
-
-/**
- *  A fadeIn animation effect
- *  @param {HTMLElement} The element desired 
- */
-function fadeIn(elem) {
-    elem.style.display = 'block';
-    elem.classList.remove('fadeOut');
-    elem.classList.add('fadeIn');
-}
-
-/**
- *  A zoomIn animation effect
- *  @param {HTMLElement} The element desired 
- */
-function fadeInUp(elem) {
-    elem.style.display = 'block';
-    elem.classList.remove('fadeOutUp');
-    elem.classList.add('fadeInUp');
-}
-
-/**
- *  A fadeOut animation effect
- *  @param {HTMLElement} The element desired 
- */
-function fadeOut(elem) {
-    elem.classList.remove('fadeIn');
-    elem.classList.add('fadeOut');
-}
-
-/**
- *  A zoomOut animation effect
- *  @param {HTMLElement} The element desired 
- */
-function fadeOutUp(elem) {
-    elem.style.display = 'block';
-    elem.classList.remove('fadeInUp');
-    elem.classList.add('fadeOutUp');
-}
 /* ----- ANGULAR CODES ----- */
 (function() {
     angular.module('wallpaper', [])
@@ -146,9 +42,9 @@ function fadeOutUp(elem) {
              *  @param {string} The url to look for in the array
              *  @return {boolean} if it's alredy exist or not
              */
-            function hasUrl(link){
-                for (var i = 0; i < $scope.images.length; i++) {
-                    if($scope.images[i].url == link){
+            function hasUrl(link) {
+                for (var i = 0, l = $scope.images.length; i < l; i++) {
+                    if ($scope.images[i].url == link) {
                         return true;
                     }
                 }
@@ -165,7 +61,7 @@ function fadeOutUp(elem) {
                 // If not editing a shared Url, do cache
                 if (code[1] === false) {
                     setItem('images', JSON.stringify($scope.images));
-                } 
+                }
             };
 
             /**
@@ -177,7 +73,7 @@ function fadeOutUp(elem) {
                     // If not editing a shared Url, do cache
                     if (code[0] === false) {
                         setItem('name', nome);
-                    } 
+                    }
 
                     // Clear the input
                     document.getElementsByClassName('mdl-textfield__input')[1].value = '';
@@ -200,22 +96,25 @@ function fadeOutUp(elem) {
             $scope.showImage = function(url) {
                 var imageShow = document.getElementsByClassName('image-show')[0];
                 imageShow.style.background = 'url(' + url + ') center / cover';
-                fadeInUp(imageShow);
+                imageShow.style.display = 'block';
             };
 
             /**
              *  Transform all the data in a link to share to others
              */
-            $scope.share = function(){
-                var link = "";
-                var array = $scope.images;
+            $scope.share = function() {
+                var link, array;
+
+                link = "";
+                array = $scope.images;
+
                 for (var i = 0, len = array.length; i < len; i++) {
-                    link += '!url!' + array[i].url;      
+                    link += '!url!' + array[i].url;
                 }
 
                 //If it's only sharing the name of the album, with empty photos
                 if (link === "") {
-                    link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/#' + 'name==' + encodeURIComponent($scope.name);   
+                    link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/#' + 'name==' + encodeURIComponent($scope.name);
                 } else {
                     link = 'http://gabrielbarbosanascimento.github.io/MaterialCollection/#' + 'name==' + encodeURIComponent($scope.name) + "&&" + "images==" + link;
                 }
@@ -224,51 +123,55 @@ function fadeOutUp(elem) {
             };
 
             /**
-             * Save an shared album's photos to the localStorage cache, not overwritting the current data
+             *  Save an shared album's photos to the localStorage cache, not overwritting the current data
              */
-            $scope.save = function(){
+            $scope.save = function() {
                 var data = [];
                 var cache = localStorage.getItem('images');
                 var x = JSON.parse(cache);
 
+                var i, j, len;
                 // If there's photos on the cache, do not overwrite them !
                 if (cache !== null) {
                     // Save first the cache on the array
-                    for (var i = 0; i < x.length; i++) {
+                    for (i = 0, len = x.length; i < len; i++) {
                         delete x[i].$$hashKey;
                         data.push(x[i]);
-                    };
+                    }
 
                     // Look for if some photo's url on the shared album is not already included on the cache
-                    for (var i = 0; i < $scope.images.length; i++) {
+                    var lengthImages = $scope.images.length;
+                    var lengthX = x.length;
+
+                    for (i = 0; i < lengthImages; i++) {
                         delete $scope.images[i].$$hashKey;
                         var equal = false;
 
                         // Compare urls with the cache
-                        for (var j = 0; j < x.length; j++) {
-                            if ($scope.images[i].url == x[j].url){
+                        for (j = 0; j < lengthX; j++) {
+                            if ($scope.images[i].url == x[j].url) {
                                 equal = true;
                             }
-                        }; 
+                        }
 
                         // If the url of the photo is not the same, it can be included on the array
                         if (!equal) {
-                            data.push($scope.images[i]);     
+                            data.push($scope.images[i]);
                         }
-                    };
+                    }
 
                 } else {
                     // If there's not previous cache, the photos of shared album can be painless added
-                    for (var i = 0; i < $scope.images.length; i++) {
-                        delete $scope.images[i].$$hashKey;
-                        data.push($scope.images[i]);
-                    };
+                    for (j = 0, len = $scope.images.length; j < len; j++) {
+                        delete $scope.images[j].$$hashKey;
+                        data.push($scope.images[j]);
+                    }
                 }
 
                 // Save the data on the cache and reload
                 setItem('images', JSON.stringify(data));
                 setItem('visit', true);
-                document.getElementById('clear-data').style.display = 'block';           
+                document.getElementById('clear-data').style.display = 'block';
                 window.location.assign('http://gabrielbarbosanascimento.github.io/MaterialCollection/');
             };
 
@@ -277,7 +180,7 @@ function fadeOutUp(elem) {
              *  @retun {Array<boolean>} return if the link openend constains an album name or images,
              *  wherein the first position is for the name and the second for the image
              */
-            function run(){
+            function run() {
                 var code = [false, false];
                 var name = getUrlData().name;
                 var imgs = getUrlData().images;
@@ -287,13 +190,13 @@ function fadeOutUp(elem) {
                     if (localStorage.getItem('name')) {
                         $scope.name = localStorage.getItem('name');
                     }
-                } else{
+                } else {
                     // Change properties for a shared link page
                     $scope.name = decodeURIComponent(name);
                     document.getElementsByClassName('splash')[0].style.display = 'none';
                     document.getElementById('save-data').style.display = 'block';
                     document.getElementById('clear-data').style.display = 'none';
-                    code[0] = true;    
+                    code[0] = true;
                 }
 
                 // if there are imgages attr at the link opened
@@ -301,18 +204,20 @@ function fadeOutUp(elem) {
                     if (localStorage.getItem('images')) {
                         $scope.images = JSON.parse(localStorage.getItem('images'));
                     }
-                } else { 
+                } else {
                     // Divide the link to get the data
                     var splitUrl = imgs.split('!url!');
-                    for (var i = 0; i < splitUrl.length; i++) {
-                        if(i > 0){
+                    var l = splitUrl.length;
+
+                    for (var i = 0; i < l; i++) {
+                        if (i > 0) {
                             $scope.images.push({
                                 url: splitUrl[i]
                             });
                         }
                     }
 
-                    code[1] = true; 
+                    code[1] = true;
                 }
 
                 return code;
@@ -320,6 +225,92 @@ function fadeOutUp(elem) {
 
         }]);
 })();
+
+/**
+ *  Add data to the localStorage cache
+ *  @param {string} A keyname to get some data from the cache
+ *  @param {Object} The data that will be stored
+ */
+function setItem(key, data) {
+    localStorage.setItem(key, data);
+}
+
+/**
+ *  Remove data from the localStorage cache
+ *  @param {string} A keyname to get some data from the cache
+ *  @param {Object} The data that will be returned
+ */
+function removeItem(key, data) {
+    localStorage.removeItem(key, data);
+}
+
+/**
+ *  Clear all the cache data from the localStorage and reload the page
+ */
+function reset() {
+    removeItem('images');
+    removeItem('name');
+    removeItem('visit');
+    location.reload();
+}
+
+/**
+ *  Gets the link of a shared album and splits it as attributes, storing it in a array
+ *  @return {Array<string>} The atributes of the custom Url
+ */
+function getUrlData() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('#') + 1).split('&&');
+
+    for (var i = 0, l = hashes.length; i < l; i++) {
+        hash = hashes[i].split('==');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+
+    return vars;
+}
+
+/**
+ *  Checks if an element has an specific class
+ *  @param {HTMLElement} The element to check if contains some class
+ *  @param {string} The name of the class to look for in the element
+ *  @return {boolean}
+ */
+function hasClass(el, cls) {
+    return el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
+}
+
+/**
+ *  Swich one class for another in some element
+ *  @param {HTMLElement} The element desired to swap classes 
+ *  @param {string} The name of the class that will be replaced
+ *  @param {String} The name of the class that will replace the other class
+ */
+function swapClasses(elem, class1, class2) {
+    elem.classList.remove(class1);
+    elem.classList.add(class2);
+}
+
+/**
+ *  A fadeIn animation effect
+ *  @param {HTMLElement} The element desired 
+ */
+function fadeIn(elem) {
+    elem.style.display = 'block';
+    elem.classList.remove('fadeOut');
+    elem.classList.add('fadeIn');
+}
+
+/**
+ *  A fadeOut animation effect
+ *  @param {HTMLElement} The element desired 
+ */
+function fadeOut(elem) {
+    elem.classList.remove('fadeIn');
+    elem.classList.add('fadeOut');
+}
+
 
 /* ----- SPLASH SCREEN CODE ----- */
 var splash = document.getElementsByClassName('splash')[0];
@@ -377,7 +368,6 @@ var cancelButton = document.getElementsByClassName('cancel');
 var addButton = document.getElementsByClassName('add');
 
 closeButton.addEventListener('click', function() {
-    fadeOutUp(imageShow);
     imageShow.style.display = 'none';
     imageShow.style.background = 'black';
 }, false);

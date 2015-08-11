@@ -1,71 +1,71 @@
 <!DOCTYPE html>
 <html ng-app="wallpaper">
-  <head>
-    <meta charset="utf-8">
-    <title>Material Collection</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#FAFAFA">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="assets/img/icon.png" />
-    <meta name="description" content="A Collection manager using HTML5, AngularJs and Material Design">
-    <meta name="keywords" content="material, design, wallpapers, collection, save, offline, angular, app">
-    <!-- IMPORTS LIBS -->
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <!-- APP LIBS-->
-    <link rel="stylesheet" type="text/css" href="assets/css/app.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/animate.min.css">
-  </head>
-  <body ng-controller="containerController">
-    <!-- GENERAL CONTAINER -->
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <!-- Title -->
-          <span class="mdl-layout-title">{{name}}</span>
-          <!-- Add spacer, to align navigation to the right -->
-          <div class="mdl-layout-spacer"></div>
-          <!-- Navigation. We sow it in small screens. -->
-          <nav class="mdl-navigation">
-            <a class="mdl-navigation__link header-share-button" ng-click="share()">
-              <span>Share</span>
-              <button style="color: rgba(0, 0, 0, 0.54);" class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="material-icons">send</i>
-              </button>
-            </a>
-            <a style="display: none" class="mdl-navigation__link header-add-button">
-              <span>Add Photo</span>
-              <button style="color: rgba(0, 0, 0, 0.54);" class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="material-icons">insert_photo</i>
-              </button>
-            </a>
-            <!-- Right aligned menu below button -->
-            <button id="demo-menu-lower-right"
-                    class="mdl-button mdl-js-button mdl-button--icon">
-              <i class="material-icons">more_vert</i>
+
+<head>
+  <meta charset="utf-8">
+  <title>Material Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FAFAFA">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/img/icon.png" />
+  <meta name="description" content="A Collection manager using HTML5, AngularJs and Material Design">
+  <meta name="keywords" content="material, design, wallpapers, collection, save, offline, angular, app">
+  <!-- IMPORTS LIBS -->
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- APP LIBS-->
+  <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/animate.min.css">
+</head>
+
+<body ng-controller="containerController">
+  <!-- GENERAL CONTAINER -->
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">{{name}}</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We sow it in small screens. -->
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link header-share-button" ng-click="share()">
+            <span>Share</span>
+            <button style="color: rgba(0, 0, 0, 0.54);" class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons">send</i>
             </button>
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-                for="demo-menu-lower-right">
-              <li class="mdl-menu__item" id="rename-album">Rename album</li>
-              <li class="mdl-menu__item" id="save-data" ng-click="save()">Save all those to my album</li>
-              <li class="mdl-menu__item" id="clear-data" onclick="reset()">Clear Data</li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-      <!-- CARDS BODY -->
-      <main class="mdl-layout__content">
-        <button id="fab" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--colored"><i class="material-icons">insert_photo</i></button>
-        <div class="page-content">
-          <div class="container">
-            <div class="row" ng-show="images.length">
-              <div class="thumb col-md-4" style="cursor: pointer" ng-repeat="x in images">
-                <div class="mdl-card mdl-shadow--2dp" ng-style="{'background':'url({{x.url}}) center / cover'}">
-                  <div class="mdl-card--expand" ng-click="showImage(x.url)"></div>
-                  <div class="mdl-card__actions">
-                    <span class="demo-card-image__filename">
+          </a>
+          <a style="display: none" class="mdl-navigation__link header-add-button">
+            <span>Add Photo</span>
+            <button style="color: rgba(0, 0, 0, 0.54);" class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons">insert_photo</i>
+            </button>
+          </a>
+          <!-- Right aligned menu below button -->
+          <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+            <li class="mdl-menu__item" id="rename-album">Rename album</li>
+            <li class="mdl-menu__item" id="save-data" ng-click="save()">Save all those to my album</li>
+            <li class="mdl-menu__item" id="clear-data" onclick="reset()">Clear Data</li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- CARDS BODY -->
+    <main class="mdl-layout__content">
+      <button id="fab" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--colored"><i class="material-icons">insert_photo</i></button>
+      <div class="page-content">
+        <div class="container">
+          <div class="row" ng-show="images.length">
+            <div class="thumb col-md-4" style="cursor: pointer" ng-repeat="x in images">
+              <div class="mdl-card mdl-shadow--2dp" ng-style="{'background':'url({{x.url}}) center / cover'}">
+                <div class="mdl-card--expand" ng-click="showImage(x.url)"></div>
+                <div class="mdl-card__actions">
+                  <span class="demo-card-image__filename">
                       <button ng-click="copy(x)" style="float: right" class="mdl-button mdl-js-button mdl-button--icon">
                         <i class="material-icons">share</i>
                       </button>
@@ -78,75 +78,75 @@
                         </button> 
                       </a>
                     </span>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </main>
-    </div>
-    <!-- IMAGE OPENING -->
-    <div class="image-show animated">
-      <button id="close" style="background: white; margin: 8px; float: right;" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+      </div>
+    </main>
+  </div>
+  <!-- IMAGE OPENING -->
+  <div class="image-show animated">
+    <button id="close" style="background: white; margin: 8px; float: right;" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
       <i class="material-icons">close</i>
-      </button>
-    </div>
-    <!-- URL INPUT-->
-    <div class="input animated">
-      <div class="mdl-card mdl-shadow--8dp">
-        <div style="color: #727272;padding: 16px 16px 0 16px" class="mdl-card__title">Add An Image</div>
-        <form style="padding: 16px 16px 0 16px">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" autocomplete="off" ng-model="images.url" type="text" id="sample3" />
-            <label style="color: rgb(63,81,181); font-weight: 100" class="mdl-textfield__label" for="sample3">Url to image...</label>       
-          </div>
-          <button style="color: #727272" type="button" class="mdl-button mdl-js-button cancel">Cancel</button> 
-          <button style="float: right" type="button" ng-click="addItem(images.url)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored add">Add</button>
-        </form>
-      </div>
-    </div>
-    <!-- ALBUM NAME INPUT-->
-    <div class="input animated">
-      <div class="mdl-card mdl-shadow--8dp">
-        <div style="color: #727272;padding: 16px 16px 0 16px" class="mdl-card__title">Rename Album</div>
-        <form class="form" style="padding: 16px 16px 0 16px">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" autocomplete="off" ng-model="name" type="text" id="sample3" />
-            <label style="color: rgb(63,81,181); font-weight: 100" class="mdl-textfield__label" for="sample3">Album's name...</label>       
-          </div>
-          <button style="float: right" type="button" ng-click="changeName(name)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored add">Add</button>
-        </form>
-      </div>
-    </div>
-    <!-- SPLASH SCREEN -->
-    <div class="splash">
-      <div class="container">
-        <div class="row" style="text-align: center;">
-          <div class="col-md-4 splash-image">
-            <img class="splash-img" src="assets/img/splash.svg">
-            <img class="splash-img2" src="assets/img/splash2.svg">
-            <h2>Create a collection</h2>
-            <p>
-              Name your collection and add images to it,
-              but don't worry, no login required. Quick and simple!
-            </p>
-          </div>
+    </button>
+  </div>
+  <!-- URL INPUT-->
+  <div class="input animated">
+    <div class="mdl-card mdl-shadow--8dp">
+      <div style="color: #727272;padding: 16px 16px 0 16px" class="mdl-card__title">Add An Image</div>
+      <form style="padding: 16px 16px 0 16px">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+          <input class="mdl-textfield__input" autocomplete="off" ng-model="images.url" type="text" id="sample3" />
+          <label style="color: rgb(63,81,181); font-weight: 100" class="mdl-textfield__label" for="sample3">Url to image...</label>
         </div>
-      </div>
-      <div class="splash-actions">      
-        <button style="float: left; color: white;margin: 16px" class="mdl-button mdl-js-button skip">SKIP</button>     
-        <button style="float: right; color: white;margin: 16px" class="mdl-button mdl-js-button mdl-button--icon next"><i class="material-icons">keyboard_arrow_right</i></button>
-        <button style="display: none;float: right; color: white;margin: 16px" class="mdl-button mdl-js-button mdl-button--icon prev"><i class="material-icons">keyboard_arrow_left</i></button>
-        <div class="dots">
-          <i class="material-icons dot-active dot1">lens</i>
-          <i class="material-icons dot-disable dot2">lens</i>
+        <button style="color: #727272" type="button" class="mdl-button mdl-js-button cancel">Cancel</button>
+        <button style="float: right" type="button" ng-click="addItem(images.url)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored add">Add</button>
+      </form>
+    </div>
+  </div>
+  <!-- ALBUM NAME INPUT-->
+  <div class="input animated">
+    <div class="mdl-card mdl-shadow--8dp">
+      <div style="color: #727272;padding: 16px 16px 0 16px" class="mdl-card__title">Rename Album</div>
+      <form class="form" style="padding: 16px 16px 0 16px">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+          <input class="mdl-textfield__input" autocomplete="off" ng-model="name" type="text" id="sample3" />
+          <label style="color: rgb(63,81,181); font-weight: 100" class="mdl-textfield__label" for="sample3">Album's name...</label>
+        </div>
+        <button style="float: right" type="button" ng-click="changeName(name)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored add">Add</button>
+      </form>
+    </div>
+  </div>
+  <!-- SPLASH SCREEN -->
+  <div class="splash">
+    <div class="container">
+      <div class="row" style="text-align: center;">
+        <div class="col-md-4 splash-image">
+          <img class="splash-img" src="assets/img/splash.svg">
+          <img class="splash-img2" src="assets/img/splash2.svg">
+          <h2>Create a collection</h2>
+          <p>
+            Name your collection and add images to it, but don't worry, no login required. Quick and simple!
+          </p>
         </div>
       </div>
     </div>
-    <!-- Script -->
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-    <script type="text/javascript" src="assets/js/app.js"></script>
-  </body>
+    <div class="splash-actions">
+      <button style="float: left; color: white;margin: 16px" class="mdl-button mdl-js-button skip">SKIP</button>
+      <button style="float: right; color: white;margin: 16px" class="mdl-button mdl-js-button mdl-button--icon next"><i class="material-icons">keyboard_arrow_right</i></button>
+      <button style="display: none;float: right; color: white;margin: 16px" class="mdl-button mdl-js-button mdl-button--icon prev"><i class="material-icons">keyboard_arrow_left</i></button>
+      <div class="dots">
+        <i class="material-icons dot-active dot1">lens</i>
+        <i class="material-icons dot-disable dot2">lens</i>
+      </div>
+    </div>
+  </div>
+  <!-- Script -->
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+</body>
+
 </html>

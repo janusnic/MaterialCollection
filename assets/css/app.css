@@ -6,29 +6,36 @@
     vertical-align: baseline;
     list-style: none;
     border: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+    tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+
 /* ----- General Page Definitions ----- */
 
 html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
+
 body {
     background: white;
 }
+
 a,
 a:link,
 a:hover {
     text-decoration: none;
     cursor: pointer;
 }
+
 .h2,
 h2 {
     font-size: 30px;
 }
+
 .h1,
 .h2,
 .h3,
@@ -38,6 +45,7 @@ h3 {
     margin-top: 20px;
     margin-bottom: 10px;
 }
+
 .h1,
 .h2,
 .h3,
@@ -53,12 +61,14 @@ h6 {
     line-height: 1.1;
     color: inherit;
 }
+
 .container {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
 }
+
 .container:before,
 .container:after,
 .row:before,
@@ -66,14 +76,17 @@ h6 {
     display: table;
     content: " ";
 }
+
 .container:after,
 .row:after {
     clear: both;
 }
+
 .row {
     margin-right: -15px;
     margin-left: -15px;
 }
+
 .col-md-1,
 .col-md-2,
 .col-md-3,
@@ -87,42 +100,54 @@ h6 {
     padding-right: 15px;
     padding-left: 15px;
 }
+
+
 /* ----- HEADER -----*/
 
 .mdl-layout__header {
     background-color: #FAFAFA;
     color: rgba(0, 0, 0, 0.86);
 }
+
 .mdl-layout__header span {
     color: rgba(0, 0, 0, 0.86);
 }
-.mdl-navigation__link{
+
+.mdl-navigation__link {
     padding: 0 4px !important;
 }
-#save-data{
+
+#save-data {
     display: none;
 }
+
+
 /* ----- CONTAINER -----*/
 
 .page-content .container {
     margin-top: 15px;
 }
+
 .mdl-card {
     width: 100%;
     height: 256px;
     overflow: hidden;
 }
+
 .mdl-card__actions {
     height: auto;
     padding: 8px;
     background: rgba(0, 0, 0, 0.2);
 }
+
 .demo-card-image__filename {
     color: #fff;
 }
+
 .thumb {
     margin-bottom: 22px;
 }
+
 #fab {
     position: fixed;
     bottom: 12px;
@@ -130,6 +155,8 @@ h6 {
     background: rgb(63, 81, 181);
     z-index: 555;
 }
+
+
 /* ----- IMAGE GALLERY SHOW -----*/
 
 .image-show {
@@ -141,17 +168,13 @@ h6 {
     z-index: 666;
     background: black;
     display: none;
-
     -webkit-animation-duration: 0.3s !important;
-    -moz-animation-duration: 0.3s !important;    
-    -o-animation-duration: 0.3s !important;
     animation-duration: 0.3s !important;
-
     -webkit-animation-delay: 0s;
-    -moz-animation-delay: 0s;    
-    -o-animation-delay: 0s;
     animation-delay: 0s;
 }
+
+
 /* ----- IMAGE ADD INPUT -----*/
 
 .input {
@@ -163,17 +186,12 @@ h6 {
     z-index: 777;
     display: none;
     background: rgba(0, 0, 0, 0.3);
-
     -webkit-animation-duration: 0.3s !important;
-    -moz-animation-duration: 0.3s !important;    
-    -o-animation-duration: 0.3s !important;
     animation-duration: 0.3s !important;
-
     -webkit-animation-delay: 0s;
-    -moz-animation-delay: 0s;    
-    -o-animation-delay: 0s;
     animation-delay: 0s;
 }
+
 .input .mdl-card {
     width: 400px;
     height: auto;
@@ -181,9 +199,11 @@ h6 {
     margin-left: auto;
     margin-right: auto;
 }
+
 .input .mdl-textfield {
     width: 100%;
 }
+
 
 /* ----- SPLASH SCREEN -----*/
 
@@ -195,55 +215,65 @@ h6 {
     position: fixed;
     z-index: 9999;
     background: #FEA724;
-    -webkit-transition: 500ms background ease;
     transition: 500ms background ease;
     display: none;
 }
+
 .splash .col-md-4 {
     display: inline-block;
     float: none;
     text-align: left;
     margin-right: -4px;
 }
+
 .splash-img2 {
     display: none;
 }
+
 .splash img {
     width: 100%;
 }
+
 .splash h2,
 .splash p {
     color: white;
     text-align: center;
 }
+
 .splash p {
     padding: 0 16px;
 }
+
 .splash-actions {
     position: fixed;
     bottom: 0;
     width: 100%;
     border-top: 1px solid rgba(255, 255, 255, 0.51);
 }
+
 .dots {
     width: 100px;
     text-align: center;
     margin: 0 auto;
     padding: 24px 0;
 }
+
 .dots i {
     font-size: 12px;
-    -webkit-transition: 500ms background ease;
     transition: 500ms background ease;
 }
+
 .dot-active {
     color: white;
     opacity: 0.7;
 }
+
 .dot-disable {
     color: black;
     opacity: 0.4;
 }
+
+
 /* ----- MEDIA QUERIES ----- */
 
 @media (min-width: 900px) {
@@ -257,11 +287,13 @@ h6 {
         margin-top: 8px;
     }
 }
+
 @media (max-width: 990px) {
     .splash-image {
         width: 450px;
     }
 }
+
 @media (max-width: 600px) {
     .header-add-button span,
     .header-share-button span {
@@ -273,6 +305,7 @@ h6 {
         padding: 0 !important;
     }
 }
+
 @media (max-width: 900px) {
     .mdl-card {
         height: 300px;
@@ -290,11 +323,13 @@ h6 {
         max-width: 400px;
     }
 }
+
 @media (max-height: 500px) {
     .skip {
         position: relative !important;
     }
 }
+
 @media (max-height: 650px) {
     .splash-image {
         max-width: 300px;
@@ -308,26 +343,31 @@ h6 {
         padding-bottom: 8px;
     }
 }
+
 @media (max-width: 430px) {
     .splash-image {
         max-width: 300px;
     }
 }
+
 @media (min-width: 768px) {
     .container {
         width: 750px;
     }
 }
+
 @media (min-width: 992px) {
     .container {
         width: 970px;
     }
 }
+
 @media (min-width: 1200px) {
     .container {
         width: 1170px;
     }
 }
+
 @media (min-width: 992px) {
     .col-md-1,
     .col-md-2,
@@ -381,8 +421,8 @@ h6 {
     }
 }
 
-@media (max-width: 1024px){
-    .mdl-layout__header-row{
+@media (max-width: 1024px) {
+    .mdl-layout__header-row {
         padding: 0 16px 0 16px;
     }
 }
